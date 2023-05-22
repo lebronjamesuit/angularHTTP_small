@@ -42,4 +42,11 @@ ng generate interface interfaces/company
                     ) 
                 }
 
-       
+
+ 6. POST HTTP 
+    6.1 Need an private user : User = {json copy on internet}      
+        myHttp.POST<User>('URL', payload);
+
+        onCreateUser(user :User)
+
+        done.
