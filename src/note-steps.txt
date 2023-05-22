@@ -3,3 +3,43 @@
 
 2. add httpClientModel to app.module.ts
 
+3. Go to cmd 
+ng generate service [name] 
+
+=> ng generate service services/user
+
+4.  Go to https://jsonplaceholder.typicode.com/ , find a good User structure
+ 
+then generate interface
+
+ng generate interface interfaces/user
+ng generate interface interfaces/address
+ng generate interface interfaces/geo
+ng generate interface interfaces/company
+
+
+5. Game on, start writing a simple REST request.
+
+
+ 5.1 I would write user.service.ts , modify constructor to add HTTPCLient 
+    5.1.1   I woud write a simple get method to call url jsonplaceholder
+
+                    constructor(private myHttp : HttpClient) { }
+
+                    
+                    getUsers() : Observable<User[]> {
+                        return this.myHttp.get<User[]>('${this.apiURL}/users')
+                    }
+
+
+ 5.1 I would try to invoke these method on app.component.ts
+
+                onGetUser(): void {
+                    this.userService.getUsers().subscribe(
+                    (response) => console.log(response),
+                    (error => console.log(error)),
+                    () => console.log('Get all users thanh cong')
+                    ) 
+                }
+
+       
